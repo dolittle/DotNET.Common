@@ -5,7 +5,7 @@
     <Copyright>Copyright Dolittle</Copyright>
     <Authors>all contributors</Authors>
     <DebugType>portable</DebugType>
-    <PackageTags>MVVM;SOLID;CQRS;LOB</PackageTags>
+    <PackageTags>MVVM;SOLID;CQRS;LOB;DDD;EDA</PackageTags>
     <PackageReleaseNotes>https://github.com/dolittle/Home/blob/master/CHANGELOG.md</PackageReleaseNotes>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -58,14 +58,6 @@
   <ItemGroup>
     <None Update="**\*.cs">
       <PackagePath>src/</PackagePath>
-      <Pack>true</Pack>
-    </None>
-    <None Update="bin\Release\netstandard1.6\*.pdb">
-      <PackagePath>lib/netstandard1.6/</PackagePath>
-      <Pack>true</Pack>
-    </None>
-    <None Update="bin\Release\net461\*.pdb">
-      <PackagePath>lib/net461/</PackagePath>
       <Pack>true</Pack>
     </None>
   </ItemGroup>
