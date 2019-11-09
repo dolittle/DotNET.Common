@@ -14,7 +14,7 @@ All properties are possible to override in your specific project.
 ## Usage
 
 In your `.csproj` file all you'll have to do is add a **PackageReference**
-to the package. The `dotnet` tool-chain will during build include any `.props`
+to the [package](https://www.nuget.org/packages/Dolittle.Common/). The `dotnet` tool-chain will during build include any `.props`
 or `.targets` files by convention from this project.
 
 You add the reference by doing the following from your terminal:
