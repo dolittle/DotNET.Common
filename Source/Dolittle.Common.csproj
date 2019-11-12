@@ -5,6 +5,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>Dolittle.Common</AssemblyName>
         <NoPackageAnalysis>true</NoPackageAnalysis>      
+        <PackageIcon>logo.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
