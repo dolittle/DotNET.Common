@@ -7,7 +7,7 @@
     <DebugType>portable</DebugType>
     <PackageTags>MVVM;SOLID;CQRS;LOB;DDD;EDA</PackageTags>
     <PackageReleaseNotes>https://github.com/dolittle/Home/blob/master/CHANGELOG.md</PackageReleaseNotes>
-    <PackageIcon>logo.png</PackageIcon>
+    <PackageIcon>$(MSBuildThisFileDirectory)logo.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/dolittle/Home</RepositoryUrl>
