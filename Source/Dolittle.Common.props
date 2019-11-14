@@ -7,7 +7,7 @@
     <DebugType>portable</DebugType>
     <PackageTags>MVVM;SOLID;CQRS;LOB;DDD;EDA</PackageTags>
     <PackageReleaseNotes>https://github.com/dolittle/Home/blob/master/CHANGELOG.md</PackageReleaseNotes>
-    <PackageIcon>$(MSBuildThisFileDirectory)logo.png</PackageIcon>
+    <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/dolittle/Home</RepositoryUrl>
@@ -40,6 +40,7 @@
 
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)logo.png" Pack="true" Visible="false" PackagePath="" />
+    <Content Include="$(MSBuildThisFileDirectory)logo.png" PackagePath="" />
   </ItemGroup>
 
   <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">

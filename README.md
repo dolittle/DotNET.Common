@@ -11,6 +11,20 @@ standard and maintained in one location.
 
 All properties are possible to override in your specific project.
 
+## Cloning
+
+This repository has sub modules, clone it with:
+
+```text
+$ git clone --recursive <repository url>
+```
+
+If you've already cloned it, you can get the submodules by doing the following:
+
+```text
+$ git submodule update --init --recursive
+```
+
 ## Usage
 
 In your `.csproj` file all you'll have to do is add a **PackageReference**
