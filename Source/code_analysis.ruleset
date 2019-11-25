@@ -3,6 +3,12 @@
     <!-- Rule Set Format : https://github.com/dotnet/roslyn/blob/master/docs/compilers/Rule%20Set%20Format.md -->
     <!-- Rule set reference : https://docs.microsoft.com/en-us/visualstudio/code-quality/rule-set-reference?view=vs-2019 -->
     <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+        <Rule Id="SA1101" Action="None" />
+        <Rule Id="SA1200" Action="None" />
+        <Rule Id="SA1400" Action="None" />
+        <Rule Id="SA1401" Action="None" />
+        <Rule Id="SA1413" Action="None" />
+        <Rule Id="SA1503" Action="None" />
     </Rules>
     <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
         <Rule Id="IDE0040" Action="None" />
@@ -12,7 +18,15 @@
     </Rules>  
     <Rules AnalyzerId="Microsoft.CodeAnalysis.Features" RuleNamespace="Microsoft.CodeAnalysis.Features">
     </Rules>
+    <Rules AnalyzerId="Microsoft.CodeQuality.Analyzers" RuleNamespace="Microsoft.CodeQuality.Analyzers">
+        <Rule Id="CA1062" Action="None" />
+        <Rule Id="CA1303" Action="None" />
+        <Rule Id="CA1810" Action="None" />
+        <Rule Id="CA2211" Action="None" />
+    </Rules>
     <Rules AnalyzerId="Roslynator.CSharp.Analyzers" RuleNamespace="Roslynator.CSharp.Analyzers">
+        <Rule Id="RCS1018" Action="None" />
         <Rule Id="RCS1194" Action="None" />
+        <Rule Id="RCS1225" Action="None" />
     </Rules>
 </RuleSet>
