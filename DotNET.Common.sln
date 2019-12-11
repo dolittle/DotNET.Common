@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dolittle.Common", "Source\Dolittle.Common.csproj", "{5B04B691-124D-4D66-AA0D-15D12F974DD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dolittle.Common", "Source\Common\Dolittle.Common.csproj", "{5B04B691-124D-4D66-AA0D-15D12F974DD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{E91B267B-738A-464F-8DC4-0D80787A2DE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dolittle.Common.Specs", "Source\Common.Specs\Dolittle.Common.Specs.csproj", "{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +34,20 @@ Global
 		{5B04B691-124D-4D66-AA0D-15D12F974DD7}.Release|x64.Build.0 = Release|Any CPU
 		{5B04B691-124D-4D66-AA0D-15D12F974DD7}.Release|x86.ActiveCfg = Release|Any CPU
 		{5B04B691-124D-4D66-AA0D-15D12F974DD7}.Release|x86.Build.0 = Release|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Debug|x64.Build.0 = Debug|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Debug|x86.Build.0 = Debug|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Release|x64.ActiveCfg = Release|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Release|x64.Build.0 = Release|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Release|x86.ActiveCfg = Release|Any CPU
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{62A1940C-A2C1-4F85-A2F5-D45C144D0F32} = {E91B267B-738A-464F-8DC4-0D80787A2DE0}
 	EndGlobalSection
 EndGlobal

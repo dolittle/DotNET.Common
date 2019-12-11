@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <Copyright>Copyright Dolittle</Copyright>
+        <Authors>all contributors</Authors>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/dolittle/Home</RepositoryUrl>
+
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <AssemblyName>Dolittle.Common.Specs</AssemblyName>
+        <OutputType>Exe</OutputType>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+        <PackageIcon>logo.png</PackageIcon>
+
+         <IsPackable>true</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)logo.png" Pack="true" Visible="false" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Update="@(PackageReference)" PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7"/>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118"/>
+        <PackageReference Include="Machine.Specifications.Runner.VisualStudio" Version="2.8.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+        <PackageReference Include="Machine.Specifications" Version="0.12.0" />
+        <PackageReference Include="Machine.Specifications.Should" Version="0.11.0" />
+        <PackageReference Include="moq" Version="4.7.*" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="Dolittle.Common.Specs.props" PackagePath="build\" />
+        <Content Include="code_analysis.ruleset" PackagePath="build\" />
+        <Content Include="../Common/code_analysis.ruleset" PackagePath="build\code_analysis_base.ruleset" />
+        <Content Include="../Common/stylecop.json" PackagePath="build\" />
+        <Content Remove="bin\**" CopyToPublishDirectory="Never" />
+    </ItemGroup>
+
+</Project>
