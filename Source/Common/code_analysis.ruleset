@@ -48,4 +48,7 @@
         <Rule Id="RCS1194" Action="None" />
         <Rule Id="RCS1225" Action="None" />
     </Rules>
+    <Rules AnalyzerId="Dolittle.Roslyn.Analyzers" RuleNamespace="Dolittle.Roslyn.Analyzers">
+        <Rule Id="DO1000" Action="Error" />
+    </Rules>
 </RuleSet>

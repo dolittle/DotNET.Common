@@ -25,6 +25,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="../Roslyn.Analyzers/Roslyn.Analyzers.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
         <Content Include="Dolittle.Common.props" PackagePath="build\" />
         <Content Include="logo.png" PackagePath="build\" />
         <Content Include="code_analysis.ruleset" PackagePath="build\" />
