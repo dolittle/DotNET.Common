@@ -39,6 +39,7 @@
         <Rule Id="CA1720" Action="None" />
         <Rule Id="CA1801" Action="None" />
         <Rule Id="CA1812" Action="None" />
+        <Rule Id="CA1819" Action="None" />
         <Rule Id="CA1823" Action="None" />
     </Rules>
     <Rules AnalyzerId="Roslynator.CSharp.Analyzers" RuleNamespace="Roslynator.CSharp.Analyzers">

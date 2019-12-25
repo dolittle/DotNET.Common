@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+
+    <AssemblyName>Dolittle.CodeAnalysis</AssemblyName>
+    <RootNamespace>Dolittle.CodeAnalysis</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Dolittle.CodeAnalysis</PackageId>
+    <PackageVersion>1.0.0.0</PackageVersion>
+    <Authors>einari</Authors>
+    <PackageProjectUrl>https://github.com/dolittle-tools/DotNET.Common</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/dolittle-tools/DotNET.Common</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>Dolittle CodeAnalysis Rules</Description>
+    <Copyright>Copyright</Copyright>
+    <PackageTags>Dolittle, Code, Analyzers</PackageTags>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)../../logo.png" Pack="true" Visible="false" PackagePath="" />
+    <Content Include="../../logo.png" PackagePath="build\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Dolittle.Common" Version="2.*" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.6.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.9.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.9.0" PrivateAssets="all" />
+    <PackageReference Update="NETStandard.Library" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="tools\*.ps1" CopyToOutputDirectory="Always" Pack="true" PackagePath="" />
+    <None Include="$(OutputPath)/$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+
+</Project>

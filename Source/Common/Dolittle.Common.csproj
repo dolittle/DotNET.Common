@@ -12,7 +12,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="$(MSBuildThisFileDirectory)logo.png" Pack="true" Visible="false" PackagePath="" />
+        <None Include="$(MSBuildThisFileDirectory)../../logo.png" Pack="true" Visible="false" PackagePath="" />
     </ItemGroup>
 
     <ItemGroup>
@@ -26,7 +26,7 @@
 
     <ItemGroup>
         <Content Include="Dolittle.Common.props" PackagePath="build\" />
-        <Content Include="logo.png" PackagePath="build\" />
+        <Content Include="../../logo.png" PackagePath="build\" />
         <Content Include="code_analysis.ruleset" PackagePath="build\" />
         <Content Include="stylecop.json" PackagePath="build\" />
         <Content Remove="bin\**" CopyToPublishDirectory="Never" />
