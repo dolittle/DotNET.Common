@@ -33,6 +33,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectRefernece Include="../CodeAnalysis/CodeAnalysis.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
         <Content Include="Dolittle.Common.Specs.props" PackagePath="build\" />
         <Content Include="code_analysis.ruleset" PackagePath="build\" />
         <Content Include="../Common/code_analysis.ruleset" PackagePath="build\code_analysis_base.ruleset" />
