@@ -8,6 +8,11 @@
     <TreatSpecificWarningsAsErrors />
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <NoWarn>NU5105;NU5118;CS1591;CS1718;CS0169</NoWarn>
+
+    <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+    <RunAnalyzers>True</RunAnalyzers>
+
   </PropertyGroup>
 
   <ItemGroup>

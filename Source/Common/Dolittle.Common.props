@@ -26,6 +26,10 @@
     <IncludeSymbols>True</IncludeSymbols>
     <IncludeSource>True</IncludeSource>
 
+    <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+    <RunAnalyzers>True</RunAnalyzers>
+
     <NoWarn>NU5118</NoWarn>
   </PropertyGroup>
 
