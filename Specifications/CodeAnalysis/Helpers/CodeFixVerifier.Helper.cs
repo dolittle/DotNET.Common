@@ -9,13 +9,15 @@ using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.Formatting;
 using Microsoft.CodeAnalysis.Simplification;
 
+#pragma warning disable SA1629, SA1116, SA1117, CA2000, SA1124, SA1515, SA1202, SA1513, CA1825, SA1005, SA1202, SA1028, SA1202, CA1829, CA1815
+
 namespace Dolittle.CodeAnalysis
 {
     /// <summary>
     /// Diagnostic Producer class with extra methods dealing with applying codefixes
-    /// All methods are static.
+    /// All methods are static
     /// </summary>
-    public partial class CodeFixVerifier : DiagnosticVerifier
+    public abstract partial class CodeFixVerifier : DiagnosticVerifier
     {
         /// <summary>
         /// Apply the inputted CodeAction to the inputted document.

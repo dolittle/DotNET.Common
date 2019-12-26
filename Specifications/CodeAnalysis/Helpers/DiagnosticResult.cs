@@ -1,15 +1,14 @@
 // Copyright (c) Dolittle. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System;
 using Microsoft.CodeAnalysis;
 
-#pragma warning disable CA1815
+#pragma warning disable SA1629, SA1116, SA1117, CA2000, SA1124, SA1515, SA1202, SA1513, CA1825, SA1005, SA1202, SA1028, SA1202, CA1829, CA1815
 
 namespace Dolittle.CodeAnalysis
 {
     /// <summary>
-    /// Struct that stores information about a Diagnostic appearing in a source.
+    /// Struct that stores information about a Diagnostic appearing in a source
     /// </summary>
     public struct DiagnosticResult
     {
@@ -17,8 +16,19 @@ namespace Dolittle.CodeAnalysis
 
         public DiagnosticResultLocation[] Locations
         {
-            get => locations ?? (locations = Array.Empty<DiagnosticResultLocation>());
-            set => locations = value;
+            get
+            {
+                if (locations == null)
+                {
+                    locations = new DiagnosticResultLocation[] { };
+                }
+                return locations;
+            }
+
+            set
+            {
+                locations = value;
+            }
         }
 
         public DiagnosticSeverity Severity { get; set; }

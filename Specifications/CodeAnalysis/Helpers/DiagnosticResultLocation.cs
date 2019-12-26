@@ -3,7 +3,7 @@
 
 using System;
 
-#pragma warning disable CA1815
+#pragma warning disable SA1629, SA1116, SA1117, CA2000, SA1124, SA1515, SA1202, SA1513, CA1825, SA1005, SA1202, SA1028, SA1202, CA1829, CA1815
 
 namespace Dolittle.CodeAnalysis
 {
