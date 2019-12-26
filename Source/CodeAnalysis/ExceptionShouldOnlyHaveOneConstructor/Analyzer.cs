@@ -48,6 +48,8 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldOnlyHaveOneConstructor
         void HandleClassDeclaration(SyntaxNodeAnalysisContext context)
         {
             var classDeclaration = context.Node as ClassDeclarationSyntax;
+            if (classDeclaration?.BaseList == null || classDeclaration?.BaseList?.Types == null) return;
+
             if (classDeclaration.BaseList.Types
                             .Where(_ => _.Type is IdentifierNameSyntax)
                             .Select(_ => _.Type as IdentifierNameSyntax)
