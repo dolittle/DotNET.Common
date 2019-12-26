@@ -16,9 +16,14 @@
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)code_analysis.ruleset</CodeAnalysisRuleSet>
 
     <DefaultItemExcludes>gulp\**\*;node_modules\**\*;jspm_packages\**\*;bower_components\**\*;wwwroot\**\*;bin\**\*;obj\**\*</DefaultItemExcludes>
-    <NoWarn>NU5105</NoWarn>
+
+    <NoWarn>NU5105;NU5118</NoWarn>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <TreatSpecificWarningsAsErrors />
+    <TreatSpecificWarningsAsErrors>CS8019</TreatSpecificWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
+    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
+
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <DocumentationFile>$()../../Artifacts/$(AssemblyName).xml</DocumentationFile>
     <IsTestProject>false</IsTestProject>
@@ -29,8 +34,6 @@
     <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
     <RunAnalyzers>True</RunAnalyzers>
-
-    <NoWarn>NU5118</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
