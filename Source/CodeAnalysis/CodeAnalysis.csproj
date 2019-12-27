@@ -6,6 +6,23 @@
 
     <AssemblyName>Dolittle.CodeAnalysis</AssemblyName>
     <RootNamespace>Dolittle.CodeAnalysis</RootNamespace>
+
+    <DocumentationFile>$()../../Artifacts/$(AssemblyName).xml</DocumentationFile>
+
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
+    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
+    <NoWarn>NU5105;NU5118</NoWarn>
+
+    <IncludeSymbols>True</IncludeSymbols>
+    <IncludeSource>True</IncludeSource>
+
+    <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+    <RunAnalyzers>True</RunAnalyzers>
+
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)../Common/code_analysis.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -28,12 +45,17 @@
     <Content Include="../../logo.png" PackagePath="build\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)../Common/stylecop.json" Link="stylecop.json" />
+  </ItemGroup>  
 
   <ItemGroup>
-    <PackageReference Include="Dolittle.Common" Version="2.*" />
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.6.1" PrivateAssets="all" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.9.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.9.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7" PrivateAssets="all"/>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all"/>
+    <PackageReference Include="Roslynator.Analyzers" Version="2.2.0" PrivateAssets="all"/>
     <PackageReference Update="NETStandard.Library" PrivateAssets="all" />
   </ItemGroup>
 

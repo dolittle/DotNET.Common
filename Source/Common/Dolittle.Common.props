@@ -19,8 +19,6 @@
 
     <NoWarn>NU5105;NU5118</NoWarn>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <TreatSpecificWarningsAsErrors>CS8019</TreatSpecificWarningsAsErrors>
-    <WarningLevel>4</WarningLevel>
     <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
     <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
 

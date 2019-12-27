@@ -22,6 +22,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7"/>
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118"/>
+        <PackageReference Include="Roslynator.Analyzers" Version="2.2.0"/>
     </ItemGroup>
 
     <ItemGroup>
