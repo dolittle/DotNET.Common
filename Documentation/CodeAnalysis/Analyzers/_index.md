@@ -1,8 +1,8 @@
 ---
 title: Analyzers
 description: This contains the overview of all the analyzers
-repository: https://github.com/dolittle-tools/DotNET.Common
 ---
+## Analyzers
 
 Below are the Dolittle specific rules that we are enforcing.
 
