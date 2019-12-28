@@ -32,7 +32,22 @@
     <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
     <RunAnalyzers>True</RunAnalyzers>
+
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
+    <VersionInPathIndex>$([MSBuild]::Subtract($(MSBuildThisFileDirectory.Split('\\').Length),3))</VersionInPathIndex>
+    <DolittleCodeAnalysisVersion>$(MSBuildThisFileDirectory.Split('\\').GetValue($(VersionInPathIndex)))</DolittleCodeAnalysisVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
+    <VersionInPathIndex>$([MSBuild]::Subtract($(MSBuildThisFileDirectory.Split('/').Length),3))</VersionInPathIndex>
+    <DolittleCodeAnalysisVersion>$(MSBuildThisFileDirectory.Split('/').GetValue($(VersionInPathIndex)))</DolittleCodeAnalysisVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Analyzer Include="$(NuGetPackageFolders)/Dolittle.CodeAnalysis/$(DolittleCodeAnalysisVersion)/analyzers/dotnet/cs/Dolittle.CodeAnalysis.dll" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Remove="node_modules\**\*" />
@@ -49,12 +64,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dolittle.CodeAnalysis" Version="2.*" />
-  </ItemGroup>
-
-  <ItemGroup>
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Link="stylecop.json" />
-  </ItemGroup>  
+  </ItemGroup>
 
   <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">
     <PropertyGroup>
