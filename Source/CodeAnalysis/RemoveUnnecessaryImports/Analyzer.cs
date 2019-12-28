@@ -32,13 +32,6 @@ namespace Dolittle.CodeAnalysis.RemoveUnnecessaryImports
              helpLinkUri: $"",
              customTags: Array.Empty<string>());
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Analyzer"/> class.
-        /// </summary>
-        public Analyzer()
-        {
-        }
-
         /// <inheritdoc/>
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
