@@ -13,6 +13,13 @@
     },
     "documentationRules": {
       "xmlHeader": false,
+      "documentInterfaces": true,
+      "documentExposedElements": true,
+      "documentationCulture": "en-US",
+      "documentInternalElements": false,
+      "documentPrivateElements": false,
+      "documentPrivateFields": false,
+      "fileNamingConvention": "stylecop",
       "companyName": "Dolittle",
       "copyrightText": "Copyright (c) {companyName}. All rights reserved.\nLicensed under the {licenseName} license. See {licenseFile} file in the project root for full license information.",
       "variables": {
