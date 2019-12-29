@@ -17,7 +17,7 @@ Rules can be disabled either through custom [rulesets](https://docs.microsoft.co
 | [DL0004](./DL0004.md) | ExceptionShouldNotBeSuffixed |
 | [DL0005](./DL0005.md) | ExceptionShouldOnlyHaveOneConstructor |
 | [DL0006](./DL0006.md) | ExceptionConstructorParametersShouldNotContainMessage |
-| DL0007 | ExceptionDescriptionShouldFollowStandard |
+| [DL0007](./DL0007.md) | ExceptionDescriptionShouldFollowStandard |
 | [DL0008](./DL0008.md) | ExceptionShouldBeSpecific |
 
 Due to some rules in the standard analyzers from Microsoft being marked as
