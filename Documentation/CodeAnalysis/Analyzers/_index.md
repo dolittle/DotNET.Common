@@ -6,8 +6,8 @@ description: This contains the overview of all the analyzers
 
 Below are the Dolittle specific rules that we are enforcing.
 Rules can be disabled either through custom [rulesets](https://docs.microsoft.com/en-us/visualstudio/code-quality/how-to-create-a-custom-rule-set) or using the [-nowarn](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/nowarn-compiler-option) compiler option or using the
-[<NoWarn/>](https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties?view=vs-2019)
-`property` in your `.csproj` file.
+[NoWarn property](https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties?view=vs-2019)
+in your `.csproj` file.
 
 | Id | Title |
 | -- | ----- |
