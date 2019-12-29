@@ -1,1 +1,1 @@
-{"build":{"workingDir":"/Users/einari/Projects/Dolittle/Tools/DotNET.Common/Source/Common"},"test":{"workingDir":"/Users/einari/Projects/Dolittle/Tools/DotNET.Common/Specifications/CodeAnalysis"}}
+{"build":{"workingDir":"/Users/einari/Projects/Dolittle/Tools/DotNET.Common/Source/CodeAnalysis"},"test":{"workingDir":"/Users/einari/Projects/Dolittle/Tools/DotNET.Common/Specifications/CodeAnalysis"}}

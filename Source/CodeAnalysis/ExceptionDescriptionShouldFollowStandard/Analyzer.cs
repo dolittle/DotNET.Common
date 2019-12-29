@@ -67,13 +67,13 @@ namespace Dolittle.CodeAnalysis.ExceptionDescriptionShouldFollowStandard
                     {
                         var descendants = trivia.GetStructure().DescendantTokens();
                         var summaryTokenAndIndex = descendants
-                                                    .Select((token, index) => new { token, index })
-                                                    .FirstOrDefault(_ => _.token.IsKind(SyntaxKind.IdentifierToken) && _.token.Text.Equals("summary", StringComparison.InvariantCulture));
+                                                    .Select((token, index) => new { Token = token, Index = index })
+                                                    .FirstOrDefault(_ => _.Token.IsKind(SyntaxKind.IdentifierToken) && _.Token.Text.Equals("summary", StringComparison.InvariantCulture));
 
                         if (summaryTokenAndIndex == default) return;
 
                         var token = descendants
-                                        .Skip(summaryTokenAndIndex.index)
+                                        .Skip(summaryTokenAndIndex.Index)
                                         .FirstOrDefault(_ => _.IsKind(SyntaxKind.XmlTextLiteralToken));
 
                         if (token == default) return;
