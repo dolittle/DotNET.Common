@@ -4,16 +4,32 @@
     <IsTestProject>true</IsTestProject>
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)code_analysis.ruleset</CodeAnalysisRuleSet>
 
+    <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
+    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <NoWarn>NU5105;NU5118;CS1591;CS1718;CS0169</NoWarn>
+    <NoWarn>NU5105;NU5118;CS1591;CS1718;CS0169;DL0008</NoWarn>
 
     <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
     <RunAnalyzers>True</RunAnalyzers>
 
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
+    <VersionInPathIndex>$([MSBuild]::Subtract($(MSBuildThisFileDirectory.Split('\\').Length),3))</VersionInPathIndex>
+    <DolittleCodeAnalysisVersion>$(MSBuildThisFileDirectory.Split('\\').GetValue($(VersionInPathIndex)))</DolittleCodeAnalysisVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
+    <VersionInPathIndex>$([MSBuild]::Subtract($(MSBuildThisFileDirectory.Split('/').Length),3))</VersionInPathIndex>
+    <DolittleCodeAnalysisVersion>$(MSBuildThisFileDirectory.Split('/').GetValue($(VersionInPathIndex)))</DolittleCodeAnalysisVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Analyzer Include="$(NuGetPackageFolders)/Dolittle.CodeAnalysis/$(DolittleCodeAnalysisVersion)/analyzers/dotnet/cs/Dolittle.CodeAnalysis.dll" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Machine.Specifications.Runner.VisualStudio" Version="2.8.0" />
@@ -22,7 +38,6 @@
     <PackageReference Include="Machine.Specifications.Should" Version="0.11.0" />
     <PackageReference Include="moq" Version="4.7.*" />
   </ItemGroup>
-
 
   <ItemGroup>
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Link="stylecop.json" />
