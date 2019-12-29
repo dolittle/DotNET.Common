@@ -9,6 +9,13 @@ Rules can be disabled either through custom [rulesets](https://docs.microsoft.co
 [NoWarn property](https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties?view=vs-2019)
 in your `.csproj` file.
 
+Example of NoWarn property:
+
+```xml
+<NoWarn>$(NoWarn),DL0001,DL0004</NoWarn>
+```
+
+
 | Id | Title |
 | -- | ----- |
 | [DL0001](./DL0001.md) | SerializableNotAllowed |
