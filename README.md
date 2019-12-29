@@ -46,3 +46,8 @@ with package references.
     <PackageReference Include="Dolittle.Common" Version="1.*"/>
 </ItemGroup>
 ```
+
+## CodeAnalysis Rules
+
+There are custom rules that has been built which enforces Dolittle specific rules.
+Read more about these [here](./Documentation/CodeAnalysis/Analyzers/_index.md).
