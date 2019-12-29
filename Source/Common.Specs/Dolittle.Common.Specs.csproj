@@ -11,7 +11,7 @@
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <PackageIcon>logo.png</PackageIcon>
 
-         <IsPackable>true</IsPackable>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
