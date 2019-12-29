@@ -9,7 +9,7 @@ Below are the Dolittle specific rules that we are enforcing.
 | Id | Title |
 | -- | ----- |
 | [DL0001](./DL0001.md) | SerializableNotAllowed |
-| DL0002 | PrivateNotAllowed |
+| [DL0002](./DL0002.md) | PrivateNotAllowed |
 | DL0003 | SealedNotAllowed |
 | DL0004 | ExceptionShouldNotBeSuffixed |
 | DL0005 | ExceptionShouldOnlyHaveOneConstructor |
