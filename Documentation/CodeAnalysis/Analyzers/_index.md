@@ -14,11 +14,11 @@ Rules can be disabled either through custom [rulesets](https://docs.microsoft.co
 | [DL0001](./DL0001.md) | SerializableNotAllowed |
 | [DL0002](./DL0002.md) | PrivateNotAllowed |
 | [DL0003](./DL0003.md) | SealedNotAllowed |
-| DL0004 | ExceptionShouldNotBeSuffixed |
+| [DL0004](./DL0004.md) | ExceptionShouldNotBeSuffixed |
 | DL0005 | ExceptionShouldOnlyHaveOneConstructor |
 | DL0006 | ExceptionConstructorParametersShouldNotContainMessage |
 | DL0007 | ExceptionDescriptionShouldFollowStandard |
-| DL0008 | ExceptionShouldBeSpecific |
+| [DL0008](./DL0008.md) | ExceptionShouldBeSpecific |
 
 Due to some rules in the standard analyzers from Microsoft being marked as
 *hidden*, we've created wrappers for the following as we see them as
