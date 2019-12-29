@@ -71,6 +71,26 @@ namespace Dolittle.CodeAnalysis.ExceptionConstructorParametersShouldNotContainMe
             VerifyCSharpDiagnostic(content, firstFailure, secondFailure);
         }
 
+        [TestMethod]
+        public void WithMessageNotBeingStringInConstructorParameters()
+        {
+            const string content = @"
+                using System;
+
+                namespace MyNamespace
+                {
+                    public class SomethingWentWrong : Exception
+                    {
+                        public SomethingWentWrong(Type firstMessage, Type messageForSecond)
+                        {
+                        }
+                    }
+                }       
+            ";
+
+            VerifyCSharpDiagnostic(content);
+        }
+
         protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
         {
             return new Analyzer();

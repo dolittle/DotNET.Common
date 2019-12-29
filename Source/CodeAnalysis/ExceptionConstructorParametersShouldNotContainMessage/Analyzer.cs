@@ -62,8 +62,9 @@ namespace Dolittle.CodeAnalysis.ExceptionConstructorParametersShouldNotContainMe
                 foreach (var constructor in constructors)
                 {
                     var wronglyNamedParameters = constructor.ParameterList.Parameters
-                                                                            .Where(_ => _
-                                                                                .Identifier.Text.IndexOf("message", StringComparison.InvariantCultureIgnoreCase) >= 0);
+                                                    .Where(_ =>
+                                                        _.Type.ToString().EndsWith("string", StringComparison.InvariantCultureIgnoreCase) &&
+                                                        _.Identifier.Text.IndexOf("message", StringComparison.InvariantCultureIgnoreCase) >= 0);
                     foreach (var parameter in wronglyNamedParameters)
                     {
                         var diagnostic = Diagnostic.Create(Rule, parameter.Identifier.GetLocation());
