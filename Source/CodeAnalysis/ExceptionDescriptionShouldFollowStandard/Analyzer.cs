@@ -55,10 +55,7 @@ namespace Dolittle.CodeAnalysis.ExceptionDescriptionShouldFollowStandard
             var classDeclaration = context.Node as ClassDeclarationSyntax;
             if (classDeclaration?.BaseList == null || classDeclaration?.BaseList?.Types == null) return;
 
-            if (classDeclaration.BaseList.Types
-                            .Where(_ => _.Type is IdentifierNameSyntax)
-                            .Select(_ => _.Type as IdentifierNameSyntax)
-                            .Any(_ => _.Identifier.Text.EndsWith("Exception", StringComparison.InvariantCulture)))
+            if (classDeclaration.InheritsASystemException(context.SemanticModel))
             {
                 foreach (var trivia in classDeclaration.GetLeadingTrivia())
                 {

@@ -50,10 +50,7 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldNotBeSuffixed
             var classDeclaration = context.Node as ClassDeclarationSyntax;
             if (classDeclaration?.BaseList == null || classDeclaration?.BaseList?.Types == null) return;
 
-            if (classDeclaration.BaseList.Types
-                            .Where(_ => _.Type is IdentifierNameSyntax)
-                            .Select(_ => _.Type as IdentifierNameSyntax)
-                            .Any(_ => _.Identifier.Text.EndsWith("Exception", StringComparison.InvariantCulture)))
+            if (classDeclaration.InheritsASystemException(context.SemanticModel))
             {
                 if (classDeclaration.Identifier.Text.EndsWith("Exception", StringComparison.InvariantCulture))
                 {

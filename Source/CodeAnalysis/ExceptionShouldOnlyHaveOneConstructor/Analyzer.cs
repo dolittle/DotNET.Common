@@ -50,10 +50,7 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldOnlyHaveOneConstructor
             var classDeclaration = context.Node as ClassDeclarationSyntax;
             if (classDeclaration?.BaseList == null || classDeclaration?.BaseList?.Types == null) return;
 
-            if (classDeclaration.BaseList.Types
-                            .Where(_ => _.Type is IdentifierNameSyntax)
-                            .Select(_ => _.Type as IdentifierNameSyntax)
-                            .Any(_ => _.Identifier.Text.EndsWith("Exception", StringComparison.InvariantCulture)))
+            if (classDeclaration.InheritsASystemException(context.SemanticModel))
             {
                 var constructors = classDeclaration.Members.Where(_ => _.IsKind(SyntaxKind.ConstructorDeclaration)).ToArray();
                 if (constructors.Length > 1)
