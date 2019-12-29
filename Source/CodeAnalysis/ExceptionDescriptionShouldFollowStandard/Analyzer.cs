@@ -72,15 +72,15 @@ namespace Dolittle.CodeAnalysis.ExceptionDescriptionShouldFollowStandard
 
                         if (summaryTokenAndIndex == default) return;
 
-                        var token = descendants
+                        var xmlTextLiteralToken = descendants
                                         .Skip(summaryTokenAndIndex.Index)
                                         .FirstOrDefault(_ => _.IsKind(SyntaxKind.XmlTextLiteralToken));
 
-                        if (token == default) return;
+                        if (xmlTextLiteralToken == default) return;
 
-                        if (!token.Text.Trim().StartsWith(Phrase, StringComparison.InvariantCulture))
+                        if (!xmlTextLiteralToken.Text.Trim().StartsWith(Phrase, StringComparison.InvariantCulture))
                         {
-                            var diagnostic = Diagnostic.Create(Rule, token.GetLocation());
+                            var diagnostic = Diagnostic.Create(Rule, xmlTextLiteralToken.GetLocation());
                             context.ReportDiagnostic(diagnostic);
                         }
                     }
