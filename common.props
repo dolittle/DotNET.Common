@@ -1,0 +1,29 @@
+<Project>
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);NU5105;NU5118</NoWarn>
+
+        <LangVersion>latest</LangVersion>
+
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+        <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
+        <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
+
+        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <DocumentationFile>$()../../Artifacts/$(AssemblyName).xml</DocumentationFile>
+        <IsTestProject>false</IsTestProject>
+
+        <IncludeSymbols>True</IncludeSymbols>
+        <IncludeSource>True</IncludeSource>
+
+        <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+        <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+        <RunAnalyzers>True</RunAnalyzers>
+
+        <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)Source/Common/code_analysis.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)Source/Common/stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+
+</Project>
