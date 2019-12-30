@@ -46,7 +46,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Analyzer Include="$(NuGetPackageFolders)/Dolittle.CodeAnalysis/$(DolittleCodeAnalysisVersion)/analyzers/dotnet/cs/Dolittle.CodeAnalysis.dll" />
+    <Analyzer Include="$(NuGetPackageFolders)Dolittle.CodeAnalysis/$(DolittleCodeAnalysisVersion)/analyzers/dotnet/cs/Dolittle.CodeAnalysis.dll" />
   </ItemGroup>
 
   <ItemGroup>
