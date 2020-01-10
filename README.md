@@ -43,7 +43,7 @@ with package references.
 
 ```xml
 <ItemGroup>
-    <PackageReference Include="Dolittle.Common" Version="1.*"/>
+    <PackageReference Include="Dolittle.Common" Version="2.*"/>
 </ItemGroup>
 ```
 
