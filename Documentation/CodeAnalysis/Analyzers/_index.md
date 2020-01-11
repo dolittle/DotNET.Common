@@ -17,14 +17,14 @@ Example of NoWarn property:
 
 | Id | Title |
 | --- | ----- |
-| [DL0001](./DL0001.md) | SerializableNotAllowed |
-| [DL0002](./DL0002.md) | PrivateNotAllowed |
-| [DL0003](./DL0003.md) | SealedNotAllowed |
-| [DL0004](./DL0004.md) | ExceptionShouldNotBeSuffixed |
-| [DL0005](./DL0005.md) | ExceptionShouldOnlyHaveOneConstructor |
-| [DL0006](./DL0006.md) | ExceptionConstructorParametersShouldNotContainMessage |
-| [DL0007](./DL0007.md) | ExceptionDescriptionShouldFollowStandard |
-| [DL0008](./DL0008.md) | ExceptionShouldBeSpecific |
+| [DL0001]({{< relref DL0001 >}}) | SerializableNotAllowed |
+| [DL0002]({{< relref DL0002 >}}) | PrivateNotAllowed |
+| [DL0003]({{< relref DL0003 >}}) | SealedNotAllowed |
+| [DL0004]({{< relref DL0004 >}}) | ExceptionShouldNotBeSuffixed |
+| [DL0005]({{< relref DL0005 >}}) | ExceptionShouldOnlyHaveOneConstructor |
+| [DL0006]({{< relref DL0006 >}}) | ExceptionConstructorParametersShouldNotContainMessage |
+| [DL0007]({{< relref DL0007 >}}) | ExceptionDescriptionShouldFollowStandard |
+| [DL0008]({{< relref DL0008 >}}) | ExceptionShouldBeSpecific |
 
 Due to some rules in the standard analyzers from Microsoft being marked as
 *hidden* and as a consequence is not possible to enable during build, we've
