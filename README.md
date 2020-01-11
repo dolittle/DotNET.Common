@@ -27,9 +27,11 @@ $ git submodule update --init --recursive
 
 ## Usage
 
-In your `.csproj` file all you'll have to do is add a **PackageReference**
-to the [package](https://www.nuget.org/packages/Dolittle.Common/). The `dotnet` tool-chain will during build include any `.props`
-or `.targets` files by convention from this project.
+In your project all you need is to add a **PackageReference** to the [package](https://www.nuget.org/packages/Dolittle.Common/).
+The `dotnet` tool-chain will during build include any `.props` or `.targets` files found in the package by convention.
+From the `.props` file you'll get a lot of default configuration set up, and since this is used by Dolittle itself,
+it will put in package information saying it is a Dolittle package and all the details Dolittle wants to have there.
+This can be overridden if you're only interested in parts of the configuration.
 
 You add the reference by doing the following from your terminal:
 
@@ -46,6 +48,8 @@ with package references.
     <PackageReference Include="Dolittle.Common" Version="2.*"/>
 </ItemGroup>
 ```
+
+By using a wildcard for minor in the version of the packages, you're guaranteed to have the latest of the package.
 
 ## CodeAnalysis Rules
 
