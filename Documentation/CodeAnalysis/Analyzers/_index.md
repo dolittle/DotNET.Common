@@ -16,7 +16,7 @@ Example of NoWarn property:
 ## Rules
 
 | Id | Title |
-| --- |:----- |
+| --- | ----- |
 | [DL0001]({{< relref DL0001 >}}) | SerializableNotAllowed |
 | [DL0002]({{< relref DL0002 >}}) | PrivateNotAllowed |
 | [DL0003]({{< relref DL0003 >}}) | SealedNotAllowed |
@@ -31,5 +31,5 @@ Due to some rules in the standard analyzers from Microsoft being marked as
 created wrappers for the following.
 
 | Id | Title |
-| --- |:----- |
+| --- | ----- |
 | CS8019 | RemoveUnnecessaryImports |
