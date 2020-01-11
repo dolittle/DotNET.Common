@@ -4,6 +4,7 @@
         <Authors>all contributors</Authors>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/dolittle/Home</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>Dolittle.Common</AssemblyName>
