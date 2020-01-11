@@ -15,6 +15,8 @@ Example of NoWarn property:
 <NoWarn>$(NoWarn),DL0001,DL0004</NoWarn>
 ```
 
+## Rules
+
 | Id | Title |
 | -- | ----- |
 | [DL0001](./DL0001.md) | SerializableNotAllowed |
