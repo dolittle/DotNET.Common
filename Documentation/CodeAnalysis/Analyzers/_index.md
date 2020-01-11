@@ -27,8 +27,8 @@ Example of NoWarn property:
 | [DL0008](./DL0008.md) | ExceptionShouldBeSpecific |
 
 Due to some rules in the standard analyzers from Microsoft being marked as
-*hidden*, we've created wrappers for the following as we see them as
-important enough to break the build.
+*hidden* and as a consequence is not possible to enable during build, we've
+created wrappers for the following.
 
 | Id | Title |
 | -- | ----- |
