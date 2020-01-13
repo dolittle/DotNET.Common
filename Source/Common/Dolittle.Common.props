@@ -15,8 +15,6 @@
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)code_analysis.ruleset</CodeAnalysisRuleSet>
 
-    <LangVersion>8.0</LangVersion>
-
     <DefaultItemExcludes>gulp\**\*;node_modules\**\*;jspm_packages\**\*;bower_components\**\*;wwwroot\**\*;bin\**\*;obj\**\*</DefaultItemExcludes>
 
     <NoWarn>NU5105;NU5118</NoWarn>
