@@ -12,6 +12,8 @@
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <PackageIcon>logo.png</PackageIcon>
 
+        <LangVersion>8.0</LangVersion>
+
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
