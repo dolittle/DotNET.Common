@@ -1,10 +1,7 @@
 ---
 title: Overview
-url: /tooling/dotnet-common/codeanalysis/analyzers/
 description: This contains the overview of all the analyzers
 weight: 1
-aliases:
-    - /tooling/dotnet-common/codeanalysis/analyzers/overview
 ---
 
 Below are the Dolittle specific rules that we are enforcing.
