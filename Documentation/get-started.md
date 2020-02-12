@@ -1,10 +1,7 @@
 ---
 title: Get started
-url: /tooling/dotnet-common/
 description: .NET Common
 weight: 1
-aliases:
-    - /tooling/dotnet-common/get-started
 ---
 The .NET Common packages represent common utilities and configuration for as building packages, releasing
 packages in a consistent way. It also includes a pre-configured system for static code analysis,
