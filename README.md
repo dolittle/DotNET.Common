@@ -55,3 +55,8 @@ By using a wildcard for minor in the version of the packages, you're guaranteed 
 
 There are custom rules that has been built which enforces Dolittle specific rules.
 Read more about these [here](./Documentation/CodeAnalysis/Analyzers/_index.md).
+
+# Issues and Contributing
+To learn how to contribute please read our [contributing](https://dolittle.io/contributing/) guide.
+
+File issues to our [Home](https://github.com/dolittle/Home/issues) repository.
