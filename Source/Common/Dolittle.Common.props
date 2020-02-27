@@ -13,16 +13,10 @@
     <RepositoryUrl>https://github.com/dolittle/Home</RepositoryUrl>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)code_analysis.ruleset</CodeAnalysisRuleSet>
 
     <LangVersion>8.0</LangVersion>
 
     <DefaultItemExcludes>gulp\**\*;node_modules\**\*;jspm_packages\**\*;bower_components\**\*;wwwroot\**\*;bin\**\*;obj\**\*</DefaultItemExcludes>
-
-    <NoWarn>NU5105;NU5118</NoWarn>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
-    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
 
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <DocumentationFile>$()../../Artifacts/$(AssemblyName).xml</DocumentationFile>
@@ -31,12 +25,18 @@
     <IncludeSymbols>True</IncludeSymbols>
     <IncludeSource>True</IncludeSource>
 
+    <!--
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)code_analysis.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>NU5105;NU5118</NoWarn>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
+    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
     <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
-    <RunAnalyzers>True</RunAnalyzers>
-
+    <RunAnalyzers>True</RunAnalyzers>-->
   </PropertyGroup>
 
+  <!--
   <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
     <VersionInPathIndex>$([MSBuild]::Subtract($(MSBuildThisFileDirectory.Split('\\').Length),3))</VersionInPathIndex>
     <DolittleCodeAnalysisVersion>$(MSBuildThisFileDirectory.Split('\\').GetValue($(VersionInPathIndex)))</DolittleCodeAnalysisVersion>
@@ -50,6 +50,7 @@
   <ItemGroup>
     <Analyzer Include="$(NuGetPackageRoot)dolittle.codeanalysis/$(DolittleCodeAnalysisVersion)/analyzers/dotnet/cs/Dolittle.CodeAnalysis.dll" />
   </ItemGroup>
+  -->
 
   <ItemGroup>
     <Content Remove="node_modules\**\*" />
@@ -66,7 +67,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Link="stylecop.json" />
+    <!--<AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Link="stylecop.json" />-->
   </ItemGroup>
 
   <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">

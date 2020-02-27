@@ -20,21 +20,24 @@
         <PackageReference Update="@(PackageReference)" PrivateAssets="All" />
     </ItemGroup>
 
+    <!--
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7"/>
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118"/>
         <PackageReference Include="Roslynator.Analyzers" Version="2.2.0"/>
-    </ItemGroup>
+    </ItemGroup>-->
 
     <ItemGroup>
-        <ProjectReference Include="../CodeAnalysis/CodeAnalysis.csproj"/>
+        <!--<ProjectReference Include="../CodeAnalysis/CodeAnalysis.csproj"/>-->
     </ItemGroup>
 
     <ItemGroup>
         <Content Include="Dolittle.Common.props" PackagePath="build\" />
         <Content Include="../../logo.png" PackagePath="build\" />
+        <!--
         <Content Include="code_analysis.ruleset" PackagePath="build\" />
         <Content Include="stylecop.json" PackagePath="build\" />
+        -->
         <Content Remove="bin\**" CopyToPublishDirectory="Never" />
     </ItemGroup>
 
