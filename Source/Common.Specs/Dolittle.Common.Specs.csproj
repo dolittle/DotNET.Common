@@ -36,9 +36,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="../CodeAnalysis/CodeAnalysis.csproj">
-            <PrivateAssets/>
-        </ProjectReference>
+        <ProjectReference Include="../CodeAnalysis/CodeAnalysis.csproj" PrivateAssets="all"/>
     </ItemGroup>
 
     <ItemGroup>
