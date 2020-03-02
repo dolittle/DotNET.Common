@@ -27,7 +27,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="../CodeAnalysis/CodeAnalysis.csproj"/>
+        <ProjectReference Include="../CodeAnalysis/CodeAnalysis.csproj">
+            <PrivateAssets/>
+        </ProjectReference>
     </ItemGroup>
 
     <ItemGroup>
