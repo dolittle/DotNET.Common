@@ -9,7 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dolittle.Types.Testing" Version="4.*"/>
         <PackageReference Include="Machine.Specifications.Runner.VisualStudio" Version="2.9.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
         <PackageReference Include="Machine.Specifications" Version="1.0.0" />
