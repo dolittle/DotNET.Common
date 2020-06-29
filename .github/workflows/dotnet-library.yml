@@ -4,6 +4,7 @@ env:
   PRERELEASE_BRANCHES: '' # Comma separated list of prerelease branch names. 'alpha,rc, ...'
   CASCADES: '' # Comma separated list of cascading repos. 'dolittle/DotNet.SDK,...'
   NUGET_OUTPUT: Artifacts/NuGet
+  COVERAGE_FOLDER: Coverage
 
 on:
   push:
@@ -19,13 +20,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-dotnet@v1
+    - name: Setup .Net
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.1.x'
-    - run: dotnet build --configuration Release
-    - run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/Coverage/ /p:MergeWith=${{ github.workspace }}/Coverage/coverage.json /p:CoverletOutputFormat=\"opencover,json\" -m:1
-    - run: ls -lR
-      working-directory: ${{ github.workspace }}/Coverage
+    - name: Build
+      run: dotnet build --configuration Release
+    - name: Test
+      run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/ /p:MergeWith=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.json /p:CoverletOutputFormat=\"opencover,json\" -m:1
     - name: Establish context
       id: context
       uses: dolittle/establish-context-action@v2
