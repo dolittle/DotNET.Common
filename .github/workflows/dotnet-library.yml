@@ -23,7 +23,7 @@ jobs:
       with:
         dotnet-version: '3.1.x'
     - run: dotnet build --configuration Release
-    - run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput='${{ github.workspace }}/Coverage/' /p:MergeWith='${{ github.workspace }}/Coverage/coverage.info' /p:CoverletOutputFormat=lcov -m:1
+    - run: dotnet test --configuration Release --no-build /p:Exclude="[xunit*]*" /p:CollectCoverage=true /p:CoverletOutput='${{ github.workspace }}/Coverage/' /p:MergeWith='${{ github.workspace }}/Coverage/coverage.info' /p:CoverletOutputFormat=lcov -m:1
     - run: ls -lR
       working-directory: ${{ github.workspace }}/Coverage
     - name: Establish context
