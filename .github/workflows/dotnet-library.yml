@@ -23,7 +23,7 @@ jobs:
       with:
         dotnet-version: '3.1.x'
     - run: dotnet build --configuration Release
-    - run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+    - run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/Coverage/coverage.info /p:MergeWith=${{ github.workspace }}/Coverage/coverage.info /p:CoverletOutputFormat=lcov
     - run: ls -lR
       working-directory: TestResults
     - name: Establish context
