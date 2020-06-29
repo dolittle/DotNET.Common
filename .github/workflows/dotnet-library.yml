@@ -26,7 +26,7 @@ jobs:
         dotnet-version: '3.1.x'
     - name: Build
       run: dotnet build --configuration Release
-    - name: Test
+    - name: Test and report coverage
       run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/ /p:MergeWith=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.json /p:CoverletOutputFormat=\"opencover,json\" -m:1
     - name: Establish context
       id: context
@@ -55,6 +55,14 @@ jobs:
     - name: Push NuGet packages
       if: ${{ steps.context.outputs.should-publish == 'true' }}
       run: dotnet nuget push '${{ env.NUGET_OUTPUT }}/*.nupkg' --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      if: ${{ steps.context.outputs.should-publish == 'true' }}
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.opencover.xml
+        fail_ci_if_error: false
     - name: Cascade
       uses: dolittle/cascade-action@v1
       if: ${{ steps.context.outputs.should-publish == 'true' && env.CASCADES != '' }}
