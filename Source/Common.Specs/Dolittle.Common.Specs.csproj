@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Coverlet.MsBuild" Version="2.9.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7"/>
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118"/>
         <PackageReference Include="Machine.Specifications.Runner.VisualStudio" Version="2.9.0" />
