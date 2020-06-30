@@ -54,7 +54,7 @@ jobs:
 
     - name: Push NuGet packages
       if: ${{ steps.context.outputs.should-publish == 'true' }}
-      run: dotnet nuget push '${{ env.NUGET_OUTPUT }}/*.nupkg' --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push --skip-duplicate '${{ env.NUGET_OUTPUT }}/*.nupkg' --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
     
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
