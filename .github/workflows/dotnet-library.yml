@@ -28,45 +28,43 @@ jobs:
       run: dotnet build --configuration Release
     - name: Test and report coverage
       run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/ /p:MergeWith=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.json /p:CoverletOutputFormat=\"opencover,json\" -m:1
-    - name: Establish context
-      id: context
-      uses: dolittle/establish-context-action@v2
-      with:
-        prerelease-branches: ${{ env.PRERELEASE_BRANCHES }}
-    - name: Increment version
-      id: increment-version
-      if: ${{ steps.context.outputs.should-publish == 'true' }}
-      uses: dolittle/increment-version-action@v2
-      with:
-        version: ${{ steps.context.outputs.current-version }}
-        release-type: ${{ steps.context.outputs.release-type }}
+    # - name: Establish context
+    #   id: context
+    #   uses: dolittle/establish-context-action@v2
+    #   with:
+    #     prerelease-branches: ${{ env.PRERELEASE_BRANCHES }}
+    # - name: Increment version
+    #   id: increment-version
+    #   if: ${{ steps.context.outputs.should-publish == 'true' }}
+    #   uses: dolittle/increment-version-action@v2
+    #   with:
+    #     version: ${{ steps.context.outputs.current-version }}
+    #     release-type: ${{ steps.context.outputs.release-type }}
 
-    - name: Create packages
-      if: ${{ steps.context.outputs.should-publish == 'true' }}
-      run: dotnet pack --no-build --configuration Release -o ${{ env.NUGET_OUTPUT }} /p:PackageVersion=${{ steps.increment-version.outputs.next-version }} -p:IncludeSymbols=false
+    # - name: Create packages
+    #   if: ${{ steps.context.outputs.should-publish == 'true' }}
+    #   run: dotnet pack --no-build --configuration Release -o ${{ env.NUGET_OUTPUT }} /p:PackageVersion=${{ steps.increment-version.outputs.next-version }} -p:IncludeSymbols=false
 
-    - name: Create GitHub Release
-      uses: dolittle/github-release-action@v1
-      if: ${{ steps.context.outputs.should-publish == 'true' }}
-      with:
-        cascading-release: ${{ steps.context.outputs.cascading-release }}
-        version: ${{ steps.increment-version.outputs.next-version }}
+    # - name: Create GitHub Release
+    #   uses: dolittle/github-release-action@v1
+    #   if: ${{ steps.context.outputs.should-publish == 'true' }}
+    #   with:
+    #     cascading-release: ${{ steps.context.outputs.cascading-release }}
+    #     version: ${{ steps.increment-version.outputs.next-version }}
 
-    - name: Push NuGet packages
-      if: ${{ steps.context.outputs.should-publish == 'true' }}
-      run: dotnet nuget push --skip-duplicate '${{ env.NUGET_OUTPUT }}/*.nupkg' --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    # - name: Push NuGet packages
+    #   if: ${{ steps.context.outputs.should-publish == 'true' }}
+    #   run: dotnet nuget push --skip-duplicate '${{ env.NUGET_OUTPUT }}/*.nupkg' --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
     
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      if: ${{ steps.context.outputs.should-publish == 'true' }}
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.opencover.xml
-        fail_ci_if_error: false
-    - name: Cascade
-      uses: dolittle/cascade-action@v1
-      if: ${{ steps.context.outputs.should-publish == 'true' && env.CASCADES != '' }}
-      with:
-        token: ${{ secrets.BUILD_PAT }}
-        version: ${{ steps.increment-version.outputs-next-version }}
-        cascades: ${{ env.CASCADES }}
+    - name: Upload coverage to CodeCov
+      # if: ${{ steps.context.outputs.should-publish == 'true' }}
+      run: bash <(curl -s https://codecov.io/bash) -f "$FILE_PATH"
+      env:
+        FILE_PATH: ${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.opencover.xml
+    # - name: Cascade
+    #   uses: dolittle/cascade-action@v1
+    #   if: ${{ steps.context.outputs.should-publish == 'true' && env.CASCADES != '' }}
+    #   with:
+    #     token: ${{ secrets.BUILD_PAT }}
+    #     version: ${{ steps.increment-version.outputs-next-version }}
+    #     cascades: ${{ env.CASCADES }}
