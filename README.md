@@ -1,7 +1,7 @@
 # Common properties and build rules
 
-[![Build Status](https://dolittle.visualstudio.com/Dolittle%20open-source%20repositories/_apis/build/status/dolittle-tools.DotNET.Common?branchName=master)](https://dolittle.visualstudio.com/Dolittle%20open-source%20repositories/_build/latest?definitionId=34&branchName=master)
-
+![.NET Library CI/CD](https://github.com/dolittle/DotNET.Common/workflows/.NET%20Library%20CI/CD/badge.svg)
+[![codecov](https://codecov.io/gh/dolittle/DotNET.Common/branch/master/graph/badge.svg)](https://codecov.io/gh/dolittle/DotNET.Common)
 This project contains common properties and build rules and more that
 helps keep consistency across all the different Dolittle projects and
 packages when building and deploying to NuGet.
