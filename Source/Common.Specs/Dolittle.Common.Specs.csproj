@@ -6,7 +6,7 @@
         <RepositoryUrl>https://github.com/dolittle/Home</RepositoryUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5</TargetFramework>
         <AssemblyName>Dolittle.Common.Specs</AssemblyName>
         <OutputType>Exe</OutputType>
         <NoPackageAnalysis>true</NoPackageAnalysis>
