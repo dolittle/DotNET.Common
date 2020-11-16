@@ -2,14 +2,13 @@
     <Import Project="common.props"/>
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5</TargetFramework>
         <IsTestProject>true</IsTestProject>
 
         <NoWarn>$(NoWarn);SA1600;CA1307;CA1305;CS1591;CA1819;SA1122;SA1615;SA1514</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Coverlet.MsBuild" Version="2.9.0" />
         <PackageReference Include="Machine.Specifications.Runner.VisualStudio" Version="2.9.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
         <PackageReference Include="Machine.Specifications" Version="1.0.0" />

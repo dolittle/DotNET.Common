@@ -6,7 +6,7 @@
         <RepositoryUrl>https://github.com/dolittle/Home</RepositoryUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>net5</TargetFramework>
         <AssemblyName>Dolittle.Common</AssemblyName>
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <PackageIcon>logo.png</PackageIcon>
