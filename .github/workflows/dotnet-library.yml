@@ -44,6 +44,17 @@ jobs:
       if: ${{ steps.context.outputs.should-publish == 'true' }}
       run: dotnet pack --no-build --configuration Release -o ${{ env.NUGET_OUTPUT }} /p:PackageVersion=${{ steps.increment-version.outputs.next-version }} -p:IncludeSymbols=false
 
+    - name: Prepend to Changelog
+      if: ${{ steps.context.outputs.should-publish == 'true' }}
+      uses: dolittle/add-to-changelog-action@v2
+      with:
+        version: ${{ steps.increment-version.outputs.next-version }}
+        body: ${{ steps.context.outputs.pr-body }}
+        pr-url: ${{ steps.context.outputs.pr-url }}
+        changelog-path: CHANGELOG.md
+        user-email: build@dolittle.com
+        user-name: dolittle-build
+
     - name: Create GitHub Release
       uses: dolittle/github-release-action@v1
       if: ${{ steps.context.outputs.should-publish == 'true' }}
