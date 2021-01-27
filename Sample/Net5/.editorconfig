@@ -1,0 +1,11 @@
+[*.cs]
+dotnet_analyzer_diagnostic.category-style.severity = warning
+
+# allow for implicit 'var' usage
+csharp_style_var_elsewhere = true
+csharp_style_var_for_built_in_types = true
+csharp_style_var_when_type_is_apparent = true
+
+# allow for => in methods and operators
+csharp_style_expression_bodied_methods = true
+csharp_style_expression_bodied_operators = true
