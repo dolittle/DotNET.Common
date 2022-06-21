@@ -20,7 +20,7 @@ namespace Dolittle.CodeAnalysis.SealedNotAllowed
         /// <summary>
         /// Represents the <see cref="DiagnosticDescriptor">rule</see> for the analyzer.
         /// </summary>
-        public static readonly DiagnosticDescriptor Rule = new(
+        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
              id: "DL0003",
              title: "SealedNotAllowed",
              messageFormat: "The keyword 'sealed' unnecessarily locks down code from inheritance - very rare occasions is this a problem",

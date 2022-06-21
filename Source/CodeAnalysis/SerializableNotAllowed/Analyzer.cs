@@ -19,7 +19,7 @@ namespace Dolittle.CodeAnalysis.SerializableNotAllowed
         /// <summary>
         /// Represents the <see cref="DiagnosticDescriptor">rule</see> for the analyzer.
         /// </summary>
-        public static readonly DiagnosticDescriptor Rule = new(
+        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
              id: "DL0001",
              title: "SerializableNotAllowed",
              messageFormat: "The use of the [Serializable] attribute is considered an old .NET desktop framework practice for interop/marshalling between AppDomains and is not necessary",

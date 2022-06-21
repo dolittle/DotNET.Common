@@ -20,7 +20,7 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldOnlyHaveOneConstructor
         /// <summary>
         /// Represents the <see cref="DiagnosticDescriptor">rule</see> for the analyzer.
         /// </summary>
-        public static readonly DiagnosticDescriptor Rule = new(
+        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
              id: "DL0005",
              title: "ExceptionShouldOnlyHaveOneConstructor",
              messageFormat: "An exception should not have more than one constructor and typically not a generic one taking a message",

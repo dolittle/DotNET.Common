@@ -19,7 +19,7 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldNotBeSuffixed
         /// <summary>
         /// Represents the <see cref="DiagnosticDescriptor">rule</see> for the analyzer.
         /// </summary>
-        public static readonly DiagnosticDescriptor Rule = new(
+        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
              id: "DL0004",
              title: "ExceptionShouldNotBeSuffixed",
              messageFormat: "The use of the word 'Exception' should not be added as a suffix - create a well understood and self explanatory name for the exception",

@@ -25,7 +25,7 @@ namespace Dolittle.CodeAnalysis.ExceptionDescriptionShouldFollowStandard
         /// <summary>
         /// Represents the <see cref="DiagnosticDescriptor">rule</see> for the analyzer.
         /// </summary>
-        public static readonly DiagnosticDescriptor Rule = new(
+        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
              id: "DL0007",
              title: "ExceptionDescriptionShouldFollowStandard",
              messageFormat: $"Exception description for API documentation should start with '{Phrase}'",

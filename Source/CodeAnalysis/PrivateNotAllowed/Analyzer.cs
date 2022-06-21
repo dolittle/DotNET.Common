@@ -21,7 +21,7 @@ namespace Dolittle.CodeAnalysis.PrivateNotAllowed
         /// <summary>
         /// Represents the <see cref="DiagnosticDescriptor">rule</see> for the analyzer.
         /// </summary>
-        public static readonly DiagnosticDescriptor Rule = new(
+        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
              id: "DL0002",
              title: "PrivateNotAllowed",
              messageFormat: "Private is implicit in C# and is not needed",

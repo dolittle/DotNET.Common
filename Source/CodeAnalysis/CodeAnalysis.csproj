@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../../default.props"/>
+  <Import Project="../../default.props" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -26,10 +26,10 @@
     <PackageTags>Dolittle, Code, Analyzers</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
   </PropertyGroup>
-<!--  <ItemGroup>-->
-<!--    <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />-->
-<!--    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />-->
-<!--  </ItemGroup>-->
+  <ItemGroup>
+    <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />
+    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)../../logo.png" Pack="true" Visible="false" PackagePath="" />
     <Content Include="../../logo.png" PackagePath="build\" />

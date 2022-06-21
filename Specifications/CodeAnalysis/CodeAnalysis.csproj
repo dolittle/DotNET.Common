@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../../specs.props"/>
+  <Import Project="../../specs.props" />
 
   <PropertyGroup>
     <AssemblyName>Dolittle.CodeAnalysis.Specs</AssemblyName>
@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../Source/CodeAnalysis/CodeAnalysis.csproj"/>
+    <ProjectReference Include="../../Source/CodeAnalysis/CodeAnalysis.csproj" />
   </ItemGroup>
 
   <ItemGroup>
