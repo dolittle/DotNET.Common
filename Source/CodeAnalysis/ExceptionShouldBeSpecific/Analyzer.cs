@@ -21,12 +21,12 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldBeSpecific
         public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
              id: "DL0008",
              title: "ExceptionShouldBeSpecific",
-             messageFormat: "Throwing a generic system exception is not a allowed - you should create a specific exception.",
+             messageFormat: "Throwing a generic system exception is not a allowed - you should create a specific exception",
              category: "Exceptions",
              defaultSeverity: DiagnosticSeverity.Error,
              isEnabledByDefault: true,
              description: null,
-             helpLinkUri: $"",
+             helpLinkUri: string.Empty,
              customTags: Array.Empty<string>());
 
         /// <inheritdoc/>
@@ -42,23 +42,26 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldBeSpecific
                 OperationKind.Throw));
         }
 
-        void HandleThrow(OperationAnalysisContext context)
+        static void HandleThrow(OperationAnalysisContext context)
         {
-            if (context.Operation is IThrowOperation throwOperation)
+            if (context.Operation is not IThrowOperation throwOperation)
             {
-                var exceptionOperation = throwOperation.Exception;
-                if (exceptionOperation is IConversionOperation conversionOperation)
-                {
-                    exceptionOperation = conversionOperation.Operand;
-                }
-
-                if (exceptionOperation is IObjectCreationOperation exception &&
-                    exception.Constructor.ContainingNamespace.Name.StartsWith("System", StringComparison.InvariantCulture))
-                {
-                    var diagnostic = Diagnostic.Create(Rule, throwOperation.Syntax.GetLocation());
-                    context.ReportDiagnostic(diagnostic);
-                }
+                return;
             }
+
+            var exceptionOperation = throwOperation.Exception;
+            if (exceptionOperation is IConversionOperation conversionOperation)
+            {
+                exceptionOperation = conversionOperation.Operand;
+            }
+
+            if (exceptionOperation is not IObjectCreationOperation exception || !exception.Constructor.ContainingNamespace.Name.StartsWith("System", StringComparison.InvariantCulture))
+            {
+                return;
+            }
+
+            var diagnostic = Diagnostic.Create(Rule, throwOperation.Syntax.GetLocation());
+            context.ReportDiagnostic(diagnostic);
         }
     }
 }

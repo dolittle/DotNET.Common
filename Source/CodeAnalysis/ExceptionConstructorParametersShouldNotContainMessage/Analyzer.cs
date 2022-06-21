@@ -23,12 +23,12 @@ namespace Dolittle.CodeAnalysis.ExceptionConstructorParametersShouldNotContainMe
         public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
              id: "DL0006",
              title: "ExceptionConstructorParametersShouldNotContainMessage",
-             messageFormat: "An argument of an exception with the name 'message' in it indicates its a generic exception and output string ownership is wrong.",
+             messageFormat: "An argument of an exception with the name 'message' in it indicates its a generic exception and output string ownership is wrong",
              category: "Exceptions",
              defaultSeverity: DiagnosticSeverity.Error,
              isEnabledByDefault: true,
              description: null,
-             helpLinkUri: $"",
+             helpLinkUri: string.Empty,
              customTags: Array.Empty<string>());
 
         /// <inheritdoc/>

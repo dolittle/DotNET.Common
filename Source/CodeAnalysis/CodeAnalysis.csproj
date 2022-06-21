@@ -1,9 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../../default.props"/>
+  <Import Project="../../default.props" />
 
   <PropertyGroup>
-    <TargetFramework>net5</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <IncludeBuildOutput>false</IncludeBuildOutput>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 
     <AssemblyName>Dolittle.CodeAnalysis</AssemblyName>
     <RootNamespace>Dolittle.CodeAnalysis</RootNamespace>
@@ -14,18 +15,21 @@
   <PropertyGroup>
     <PackageId>Dolittle.CodeAnalysis</PackageId>
     <PackageVersion>1.0.0.0</PackageVersion>
-    <Authors>einari</Authors>
-    <PackageProjectUrl>https://github.com/dolittle-tools/DotNET.Common</PackageProjectUrl>
+    <Authors>Dolittle</Authors>
+    <PackageProjectUrl>https://github.com/dolittle/DotNET.Common</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>logo.png</PackageIcon>
-    <RepositoryUrl>https://github.com/dolittle-tools/DotNET.Common</RepositoryUrl>
+    <RepositoryUrl>https://github.com/dolittle/DotNET.Common</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>Dolittle CodeAnalysis Rules</Description>
     <Copyright>Copyright</Copyright>
     <PackageTags>Dolittle, Code, Analyzers</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
   </PropertyGroup>
-
+  <ItemGroup>
+    <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />
+    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)../../logo.png" Pack="true" Visible="false" PackagePath="" />
     <Content Include="../../logo.png" PackagePath="build\" />
@@ -36,19 +40,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.9.8" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.9.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.9.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Features" Version="2.9.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Features" Version="2.9.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.2.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.2.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Features" Version="4.2.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Features" Version="4.2.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" PrivateAssets="all" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" />
-    <PackageReference Include="Roslynator.Analyzers" Version="2.2.0" PrivateAssets="all" />
+    <PackageReference Include="Roslynator.Analyzers" Version="4.1.1" PrivateAssets="all" />
     <PackageReference Update="NETStandard.Library" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="tools\*.ps1" CopyToOutputDirectory="Always" Pack="true" PackagePath="" />
+    <None Update="tools\*.ps1" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="" />
     <None Include="$(OutputPath)/$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 

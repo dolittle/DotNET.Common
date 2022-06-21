@@ -28,12 +28,12 @@ namespace Dolittle.CodeAnalysis.ExceptionDescriptionShouldFollowStandard
         public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
              id: "DL0007",
              title: "ExceptionDescriptionShouldFollowStandard",
-             messageFormat: $"Exception description for API documentation should start with '{Phrase}'.",
+             messageFormat: $"Exception description for API documentation should start with '{Phrase}'",
              category: "Naming",
              defaultSeverity: DiagnosticSeverity.Error,
              isEnabledByDefault: true,
              description: null,
-             helpLinkUri: $"",
+             helpLinkUri: string.Empty,
              customTags: Array.Empty<string>());
 
         /// <inheritdoc/>
@@ -50,38 +50,52 @@ namespace Dolittle.CodeAnalysis.ExceptionDescriptionShouldFollowStandard
                     SyntaxKind.ClassDeclaration));
         }
 
-        void HandleClassDeclaration(SyntaxNodeAnalysisContext context)
+        static void HandleClassDeclaration(SyntaxNodeAnalysisContext context)
         {
             var classDeclaration = context.Node as ClassDeclarationSyntax;
-            if (classDeclaration?.BaseList == null || classDeclaration?.BaseList?.Types == null) return;
-
-            if (classDeclaration.InheritsASystemException(context.SemanticModel))
+            if (classDeclaration?.BaseList?.Types == null)
             {
-                foreach (var trivia in classDeclaration.GetLeadingTrivia())
+                return;
+            }
+
+            if (!classDeclaration.InheritsASystemException(context.SemanticModel))
+            {
+                return;
+            }
+
+            foreach (var trivia in classDeclaration.GetLeadingTrivia())
+            {
+                if (!trivia.IsKind(SyntaxKind.SingleLineDocumentationCommentTrivia) && !trivia.IsKind(SyntaxKind.MultiLineDocumentationCommentTrivia))
                 {
-                    if (trivia.IsKind(SyntaxKind.SingleLineDocumentationCommentTrivia) ||
-                        trivia.IsKind(SyntaxKind.MultiLineDocumentationCommentTrivia))
-                    {
-                        var descendants = trivia.GetStructure().DescendantTokens();
-                        var summaryTokenAndIndex = descendants
-                                                    .Select((token, index) => new { Token = token, Index = index })
-                                                    .FirstOrDefault(_ => _.Token.IsKind(SyntaxKind.IdentifierToken) && _.Token.Text.Equals("summary", StringComparison.InvariantCulture));
-
-                        if (summaryTokenAndIndex == default) return;
-
-                        var xmlTextLiteralToken = descendants
-                                        .Skip(summaryTokenAndIndex.Index)
-                                        .FirstOrDefault(_ => _.IsKind(SyntaxKind.XmlTextLiteralToken));
-
-                        if (xmlTextLiteralToken == default) return;
-
-                        if (!xmlTextLiteralToken.Text.Trim().StartsWith(Phrase, StringComparison.InvariantCulture))
-                        {
-                            var diagnostic = Diagnostic.Create(Rule, xmlTextLiteralToken.GetLocation());
-                            context.ReportDiagnostic(diagnostic);
-                        }
-                    }
+                    continue;
                 }
+
+                var descendants = trivia.GetStructure()?.DescendantTokens().ToArray();
+                var summaryTokenAndIndex = descendants
+                    .Select((token, index) => new { Token = token, Index = index })
+                    .FirstOrDefault(_ => _.Token.IsKind(SyntaxKind.IdentifierToken) && _.Token.Text.Equals("summary", StringComparison.InvariantCulture));
+
+                if (summaryTokenAndIndex == default)
+                {
+                    return;
+                }
+
+                var xmlTextLiteralToken = descendants
+                    .Skip(summaryTokenAndIndex.Index)
+                    .FirstOrDefault(_ => _.IsKind(SyntaxKind.XmlTextLiteralToken));
+
+                if (xmlTextLiteralToken == default)
+                {
+                    return;
+                }
+
+                if (xmlTextLiteralToken.Text.Trim().StartsWith(Phrase, StringComparison.InvariantCulture))
+                {
+                    continue;
+                }
+
+                var diagnostic = Diagnostic.Create(Rule, xmlTextLiteralToken.GetLocation());
+                context.ReportDiagnostic(diagnostic);
             }
         }
     }

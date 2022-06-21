@@ -23,12 +23,12 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldOnlyHaveOneConstructor
         public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
              id: "DL0005",
              title: "ExceptionShouldOnlyHaveOneConstructor",
-             messageFormat: "An exception should not have more than one constructor and typically not a generic one taking a message.",
+             messageFormat: "An exception should not have more than one constructor and typically not a generic one taking a message",
              category: "Exceptions",
              defaultSeverity: DiagnosticSeverity.Error,
              isEnabledByDefault: true,
              description: null,
-             helpLinkUri: $"",
+             helpLinkUri: string.Empty,
              customTags: Array.Empty<string>());
 
         /// <inheritdoc/>
@@ -45,22 +45,29 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldOnlyHaveOneConstructor
                     SyntaxKind.ClassDeclaration));
         }
 
-        void HandleClassDeclaration(SyntaxNodeAnalysisContext context)
+        static void HandleClassDeclaration(SyntaxNodeAnalysisContext context)
         {
             var classDeclaration = context.Node as ClassDeclarationSyntax;
-            if (classDeclaration?.BaseList == null || classDeclaration?.BaseList?.Types == null) return;
-
-            if (classDeclaration.InheritsASystemException(context.SemanticModel))
+            if (classDeclaration?.BaseList?.Types is null)
             {
-                var constructors = classDeclaration.Members.Where(_ => _.IsKind(SyntaxKind.ConstructorDeclaration)).ToArray();
-                if (constructors.Length > 1)
-                {
-                    foreach (var constructor in constructors)
-                    {
-                        var diagnostic = Diagnostic.Create(Rule, constructor.GetLocation());
-                        context.ReportDiagnostic(diagnostic);
-                    }
-                }
+                return;
+            }
+
+            if (!classDeclaration.InheritsASystemException(context.SemanticModel))
+            {
+                return;
+            }
+
+            var constructors = classDeclaration.Members.Where(_ => _.IsKind(SyntaxKind.ConstructorDeclaration)).ToArray();
+            if (constructors.Length <= 1)
+            {
+                return;
+            }
+
+            foreach (var constructor in constructors)
+            {
+                var diagnostic = Diagnostic.Create(Rule, constructor.GetLocation());
+                context.ReportDiagnostic(diagnostic);
             }
         }
     }
