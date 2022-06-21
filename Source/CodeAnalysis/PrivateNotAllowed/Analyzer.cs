@@ -21,15 +21,15 @@ namespace Dolittle.CodeAnalysis.PrivateNotAllowed
         /// <summary>
         /// Represents the <see cref="DiagnosticDescriptor">rule</see> for the analyzer.
         /// </summary>
-        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
+        public static readonly DiagnosticDescriptor Rule = new(
              id: "DL0002",
              title: "PrivateNotAllowed",
-             messageFormat: "Private is implicit in C# and is not needed.",
+             messageFormat: "Private is implicit in C# and is not needed",
              category: "Style",
              defaultSeverity: DiagnosticSeverity.Error,
              isEnabledByDefault: true,
              description: null,
-             helpLinkUri: $"",
+             helpLinkUri: string.Empty,
              customTags: Array.Empty<string>());
 
         /// <inheritdoc/>
@@ -56,29 +56,36 @@ namespace Dolittle.CodeAnalysis.PrivateNotAllowed
                 ImmutableArray.Create(SyntaxKind.PropertyDeclaration));
         }
 
-        void HandleDeclarations(SyntaxNodeAnalysisContext context)
+        static void HandleDeclarations(SyntaxNodeAnalysisContext context)
         {
-            var childTokens = context.Node?.ChildTokens();
-            if (childTokens == null) return;
+            var childTokens = context.Node.ChildTokens();
+            if (childTokens is null)
+            {
+                return;
+            }
+
             ReportErrorIfModifierIsPrivate(context, childTokens);
         }
 
-        void HandleEventDeclaration(SyntaxNodeAnalysisContext context)
+        static void HandleEventDeclaration(SyntaxNodeAnalysisContext context)
         {
             var eventDeclaration = context.Node as EventDeclarationSyntax;
             ReportErrorIfModifierIsPrivate(context, eventDeclaration.Modifiers);
         }
 
-        void HandlePropertyDeclaration(SyntaxNodeAnalysisContext context)
+        static void HandlePropertyDeclaration(SyntaxNodeAnalysisContext context)
         {
             var propertyDeclaration = context.Node as PropertyDeclarationSyntax;
             ReportErrorIfModifierIsPrivate(context, propertyDeclaration.Modifiers);
         }
 
-        void ReportErrorIfModifierIsPrivate(SyntaxNodeAnalysisContext context, IEnumerable<SyntaxToken> tokens)
+        static void ReportErrorIfModifierIsPrivate(SyntaxNodeAnalysisContext context, IEnumerable<SyntaxToken> tokens)
         {
             var privateKeyword = tokens.SingleOrDefault(_ => _.IsKind(SyntaxKind.PrivateKeyword));
-            if (privateKeyword == default) return;
+            if (privateKeyword == default)
+            {
+                return;
+            }
 
             var diagnostic = Diagnostic.Create(Rule, privateKeyword.GetLocation());
             context.ReportDiagnostic(diagnostic);

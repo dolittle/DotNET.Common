@@ -21,15 +21,15 @@ namespace Dolittle.CodeAnalysis.RemoveUnnecessaryImports
         /// <summary>
         /// Represents the <see cref="DiagnosticDescriptor">rule</see> for the analyzer.
         /// </summary>
-        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
+        public static readonly DiagnosticDescriptor Rule = new(
              id: "CS8019",
              title: "RemoveUnnecessaryImports",
-             messageFormat: $"Unnecessary using directive.",
+             messageFormat: "Unnecessary using directive",
              category: "Style",
              defaultSeverity: DiagnosticSeverity.Error,
              isEnabledByDefault: true,
              description: null,
-             helpLinkUri: $"",
+             helpLinkUri: string.Empty,
              customTags: Array.Empty<string>());
 
         /// <inheritdoc/>
@@ -44,25 +44,27 @@ namespace Dolittle.CodeAnalysis.RemoveUnnecessaryImports
             context.RegisterSemanticModelAction(AnalyzeSemanticModel);
         }
 
-        void AnalyzeSemanticModel(SemanticModelAnalysisContext context)
+        static void AnalyzeSemanticModel(SemanticModelAnalysisContext context)
         {
             var cancellationToken = context.CancellationToken;
             var model = context.SemanticModel;
             var root = model.SyntaxTree.GetRoot(cancellationToken);
 
             var diagnostics = model.GetDiagnostics(cancellationToken: cancellationToken);
-            if (!diagnostics.Any()) return;
-
-            foreach (var diagnostic in diagnostics)
+            if (!diagnostics.Any())
             {
-                if (diagnostic.Id == "CS8019")
+                return;
+            }
+
+            foreach (var diagnostic in diagnostics.Where(diagnostic => diagnostic.Id == "CS8019"))
+            {
+                if (root.FindNode(diagnostic.Location.SourceSpan) is not UsingDirectiveSyntax node)
                 {
-                    if (root.FindNode(diagnostic.Location.SourceSpan) is UsingDirectiveSyntax node)
-                    {
-                        var diagnosticWrapper = Diagnostic.Create(Rule, node.GetLocation());
-                        context.ReportDiagnostic(diagnosticWrapper);
-                    }
+                    continue;
                 }
+
+                var diagnosticWrapper = Diagnostic.Create(Rule, node.GetLocation());
+                context.ReportDiagnostic(diagnosticWrapper);
             }
         }
     }

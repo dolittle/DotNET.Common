@@ -6,7 +6,7 @@
         <RepositoryUrl>https://github.com/dolittle/Home</RepositoryUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
-        <TargetFramework>net5</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>Dolittle.Common</AssemblyName>
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <PackageIcon>logo.png</PackageIcon>
@@ -23,7 +23,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7"/>
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118"/>
-        <PackageReference Include="Roslynator.Analyzers" Version="2.2.0"/>
+        <PackageReference Include="Roslynator.Analyzers" Version="4.1.1"/>
     </ItemGroup>
 
 

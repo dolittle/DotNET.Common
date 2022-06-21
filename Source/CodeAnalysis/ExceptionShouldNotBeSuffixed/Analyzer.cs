@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Immutable;
-using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -20,15 +19,15 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldNotBeSuffixed
         /// <summary>
         /// Represents the <see cref="DiagnosticDescriptor">rule</see> for the analyzer.
         /// </summary>
-        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
+        public static readonly DiagnosticDescriptor Rule = new(
              id: "DL0004",
              title: "ExceptionShouldNotBeSuffixed",
-             messageFormat: "The use of the word 'Exception' should not be added as a suffix - create a well understood and self explanatory name for the exception.",
+             messageFormat: "The use of the word 'Exception' should not be added as a suffix - create a well understood and self explanatory name for the exception",
              category: "Naming",
              defaultSeverity: DiagnosticSeverity.Error,
              isEnabledByDefault: true,
              description: null,
-             helpLinkUri: $"",
+             helpLinkUri: string.Empty,
              customTags: Array.Empty<string>());
 
         /// <inheritdoc/>
@@ -45,19 +44,26 @@ namespace Dolittle.CodeAnalysis.ExceptionShouldNotBeSuffixed
                     SyntaxKind.ClassDeclaration));
         }
 
-        void HandleClassDeclaration(SyntaxNodeAnalysisContext context)
+        static void HandleClassDeclaration(SyntaxNodeAnalysisContext context)
         {
             var classDeclaration = context.Node as ClassDeclarationSyntax;
-            if (classDeclaration?.BaseList == null || classDeclaration?.BaseList?.Types == null) return;
-
-            if (classDeclaration.InheritsASystemException(context.SemanticModel))
+            if (classDeclaration?.BaseList == null || classDeclaration?.BaseList?.Types == null)
             {
-                if (classDeclaration.Identifier.Text.EndsWith("Exception", StringComparison.InvariantCulture))
-                {
-                    var diagnostic = Diagnostic.Create(Rule, classDeclaration.Identifier.GetLocation());
-                    context.ReportDiagnostic(diagnostic);
-                }
+                return;
             }
+
+            if (!classDeclaration.InheritsASystemException(context.SemanticModel))
+            {
+                return;
+            }
+
+            if (!classDeclaration.Identifier.Text.EndsWith("Exception", StringComparison.InvariantCulture))
+            {
+                return;
+            }
+
+            var diagnostic = Diagnostic.Create(Rule, classDeclaration.Identifier.GetLocation());
+            context.ReportDiagnostic(diagnostic);
         }
     }
 }

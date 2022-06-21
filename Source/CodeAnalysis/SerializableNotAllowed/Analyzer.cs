@@ -19,15 +19,15 @@ namespace Dolittle.CodeAnalysis.SerializableNotAllowed
         /// <summary>
         /// Represents the <see cref="DiagnosticDescriptor">rule</see> for the analyzer.
         /// </summary>
-        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
+        public static readonly DiagnosticDescriptor Rule = new(
              id: "DL0001",
              title: "SerializableNotAllowed",
-             messageFormat: "The use of the [Serializable] attribute is considered an old .NET desktop framework practice for interop/marshalling between AppDomains and is not necessary.",
+             messageFormat: "The use of the [Serializable] attribute is considered an old .NET desktop framework practice for interop/marshalling between AppDomains and is not necessary",
              category: "Legacy",
              defaultSeverity: DiagnosticSeverity.Error,
              isEnabledByDefault: true,
              description: null,
-             helpLinkUri: $"",
+             helpLinkUri: string.Empty,
              customTags: Array.Empty<string>());
 
         /// <inheritdoc/>
@@ -41,14 +41,16 @@ namespace Dolittle.CodeAnalysis.SerializableNotAllowed
             context.RegisterSyntaxNodeAction(AnalyzeSyntaxNode, SyntaxKind.Attribute);
         }
 
-        void AnalyzeSyntaxNode(SyntaxNodeAnalysisContext context)
+        static void AnalyzeSyntaxNode(SyntaxNodeAnalysisContext context)
         {
             var attribute = context.Node as AttributeSyntax;
-            if (attribute.Name.ToString() == "Serializable")
+            if (attribute.Name.ToString() != "Serializable")
             {
-                var diagnostic = Diagnostic.Create(Rule, context.Node.GetLocation());
-                context.ReportDiagnostic(diagnostic);
+                return;
             }
+
+            var diagnostic = Diagnostic.Create(Rule, context.Node.GetLocation());
+            context.ReportDiagnostic(diagnostic);
         }
     }
 }
